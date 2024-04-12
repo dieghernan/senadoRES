@@ -397,35 +397,30 @@ onward</p>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">sessions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_count.html" class="external-link">stat_sum</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">sesionLegislatura</span>, <span class="va">sesionHoraInicio</span>, </span>
 <span>                 fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html" class="external-link">after_stat</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, geom <span class="op">=</span> <span class="st">"tile"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>size <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Hour of sessions"</span>, x <span class="op">=</span> <span class="st">"Legislature"</span>, y <span class="op">=</span> <span class="st">"Starting hour"</span>,</span>
 <span>         fill <span class="op">=</span> <span class="st">"Sessions"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">19</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use "none" instead as</span></span>
-<span><span class="co">#&gt; of ggplot2 3.3.4.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">19</span><span class="op">)</span></span></code></pre></div>
 <p><img src="senadoRES_files/figure-html/plot-plenarias-1.png" width="2187.5"></p>
 <p>So most of the times they meet at the afternoon.</p>
 <p>If you want more detailed information of each session you can use the
 fichUrlDetalleSesion details:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/detalles.html">detalles</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://www.senado.es"</span>, <span class="va">sessions</span><span class="op">$</span><span class="va">fichUrlDetalleSesion</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/detalles.html">detalles</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://www.senado.es"</span>, <span class="va">sessions</span><span class="op">$</span><span class="va">fichUrlDetalleSesion</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">details</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"asunto_id"</span>, <span class="st">"asunto_hora_inicio"</span>, <span class="st">"asunto_hora_fin"</span>, <span class="st">"punto_literal"</span>, <span class="st">"intervencion_orador_desc"</span>, <span class="st">"intervencion_orador_idWeb"</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;   asunto_id asunto_hora_inicio asunto_hora_fin                    punto_literal</span></span>
-<span><span class="co">#&gt; 1    147602              16:01           16:01                            Actas</span></span>
-<span><span class="co">#&gt; 2    147603              16:01           19:49 Proyectos y Proposiciones de Ley</span></span>
-<span><span class="co">#&gt; 3    147603              16:01           19:49 Proyectos y Proposiciones de Ley</span></span>
-<span><span class="co">#&gt; 4    147603              16:01           19:49 Proyectos y Proposiciones de Ley</span></span>
-<span><span class="co">#&gt; 5    147603              16:01           19:49 Proyectos y Proposiciones de Ley</span></span>
-<span><span class="co">#&gt;               intervencion_orador_desc intervencion_orador_idWeb</span></span>
-<span><span class="co">#&gt; 1                                 &lt;NA&gt;                      &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2           GUERRERO ROSADO, PETRONILA                     15301</span></span>
-<span><span class="co">#&gt; 3 JULIOS REYES, MARÍA DEL MAR DEL PINO                     16165</span></span>
-<span><span class="co">#&gt; 4     SANTOS FERNÁNDEZ, ROSARIO ISABEL                     15235</span></span>
-<span><span class="co">#&gt; 5  YANGUAS FERNÁNDEZ, FRANCISCO JAVIER                     15406</span></span></code></pre></div>
+<span><span class="co">#&gt;   asunto_id asunto_hora_inicio asunto_hora_fin punto_literal</span></span>
+<span><span class="co">#&gt; 1    146024              16:01           16:02          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2    146026              16:02           16:02          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3    146028              16:03           16:03         Actas</span></span>
+<span><span class="co">#&gt; 4    146029              16:03           16:03     Preguntas</span></span>
+<span><span class="co">#&gt; 5    146030              16:03           16:11     Preguntas</span></span>
+<span><span class="co">#&gt;   intervencion_orador_desc intervencion_orador_idWeb</span></span>
+<span><span class="co">#&gt; 1  AGORRIA MARTÍNEZ, IDOIA                     16825</span></span>
+<span><span class="co">#&gt; 2  URQUIZU SANCHO, IGNACIO                     16845</span></span>
+<span><span class="co">#&gt; 3                     &lt;NA&gt;                      &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4                     &lt;NA&gt;                      &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5      LÓPEZ ÁGUEDA, ÓSCAR                     15026</span></span></code></pre></div>
 <p>This will help you know who talked, how long about which topics and
 which documents got referenced.</p>
 </div>
